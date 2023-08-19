@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Phonebook</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <h1>Phonebook</h1>
+    <nav class="menu">
+        <ul>
+            <li><a href="{{ url_for('add_entry') }}">Добавить запись</a></li>
+            <li><a href="{{ url_for('search_entries') }}">Поиск записей</a></li>
+        </ul>
+    </nav>
+    <table>
+        <tr>
+            <th>Фамилия</th>
+            <th>Имя</th>
+            <th>Отчество</th>
+            <th>Организация</th>
+            <th>Рабочий номер телефона</th>
+            <th>Персональный номер телефона</th>
+            <th></th>
+        </tr>
+        {% for entry in entries %}
+        <tr>
+            <td>{{ entry[0] }}</td>
+            <td>{{ entry[1] }}</td>
+            <td>{{ entry[2] }}</td>
+            <td>{{ entry[3] }}</td>
+            <td>{{ entry[4] }}</td>
+            <td>{{ entry[5] }}</td>
+            <td>
+                <a class="button" href="{{ url_for('edit_entry', index=loop.index0) }}">
+                    <img src="static/images/edit.png" width="100px">
+                </a>
+            </td>
+        </tr>
+        {% endfor %}
+    </table>
+    <div class="pagination">
+        {% if current_page > 1 %}
+            <a class="button" href="{{ url_for('index', page=current_page-1) }}">Previous</a>
+        {% endif %}
+        {% if current_page < total_pages %}
+            <a class="button" href="{{ url_for('index', page=current_page+1) }}">Next</a>
+        {% endif %}
+    </div>
+</body>
+</html>

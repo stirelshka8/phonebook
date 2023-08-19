@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Edit Entry</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <h1>Edit Entry</h1>
+    <form method="POST" action="">
+        <label>Фамилия:</label>
+        <input type="text" name="last_name" value="{{ entry[0] }}"><br>
+        <label>Имя:</label>
+        <input type="text" name="first_name" value="{{ entry[1] }}"><br>
+        <label>Отчество:</label>
+        <input type="text" name="middle_name" value="{{ entry[2] }}"><br>
+        <label>Организация:</label>
+        <input type="text" name="organization" value="{{ entry[3] }}"><br>
+        <label>Рабочий телефон:</label>
+        <input type="text" name="work_phone" value="{{ entry[4] }}"><br>
+        <label>Персональный телефон:</label>
+        <input type="text" name="personal_phone" value="{{ entry[5] }}"><br>
+        <input type="submit" class="button" value="Сохранить изменения">
+    </form>
+    <br>
+    <div class="back-link">
+        <a class="button" href="{{ url_for('index') }}">Вернуться к справочнику</a>
+    </div>
+</body>
+</html>

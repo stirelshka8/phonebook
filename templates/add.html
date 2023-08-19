@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Add Entry</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>Add New Entry</h1>
+        <form method="POST" action="{{ url_for('add_entry') }}">
+            <label>Фамилия:</label>
+            <input type="text" name="last_name"><br>
+            <label>Имя:</label>
+            <input type="text" name="first_name"><br>
+            <label>Отчество:</label>
+            <input type="text" name="middle_name"><br>
+            <label>Организация:</label>
+            <input type="text" name="organization"><br>
+            <label>Рабочий телефон:</label>
+            <input type="text" name="work_phone"><br>
+            <label>Персональный телефон (сотовый):</label>
+            <input type="text" name="personal_phone"><br>
+            <input class="button" type="submit" value="Add Entry">
+        </form>
+        <br>
+        <a class="button" href="{{ url_for('index') }}">Back to Phonebook</a>
+    </div>
+</body>
+</html>

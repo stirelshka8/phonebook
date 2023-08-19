@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Search Results</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <h1>Search Results</h1>
+    <form method="POST" action="{{ url_for('search_entries') }}">
+        <input type="text" name="query" placeholder="Введите запрос">
+        <input type="submit" value="Поиск">
+    </form>
+    <br>
+    {% if search_results %}
+        <table>
+            <tr>
+                <th>Фамилия</th>
+                <th>Имя</th>
+                <th>Отчество</th>
+                <th>Организация</th>
+                <th>Рабочий телефон</th>
+                <th>Персональный телефон (сотовый)</th>
+            </tr>
+            {% for entry in search_results %}
+            <tr>
+                <td>{{ entry[0] }}</td>
+                <td>{{ entry[1] }}</td>
+                <td>{{ entry[2] }}</td>
+                <td>{{ entry[3] }}</td>
+                <td>{{ entry[4] }}</td>
+                <td>{{ entry[5] }}</td>
+            </tr>
+            {% endfor %}
+        </table>
+    {% else %}
+        <p>Результаты не найдены.</p>
+    {% endif %}
+    <br>
+    <div class="back-link">
+        <a class="button" href="{{ url_for('index') }}">Вернуться к справочнику</a>
+    </div>
+</body>
+</html>
