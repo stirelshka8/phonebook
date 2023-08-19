@@ -69,4 +69,4 @@ stirelshka8
 
 ## Лицензия
 
-Этот проект распространяется под лицензией [MIT](https://chat.openai.com/LICENSE).
+Этот проект распространяется под лицензией [MIT](https://github.com/stirelshka8/phonebook/blob/master/LICENSE).
