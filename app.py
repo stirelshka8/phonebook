@@ -49,8 +49,13 @@ def index() -> str:
     start_idx = (page - 1) * entries_per_page
     end_idx = start_idx + entries_per_page
     entries = data[start_idx:end_idx]
+    # print(start_idx)
     total_pages = (total_entries + entries_per_page - 1) // entries_per_page
-    return render_template('index.html', entries=entries, current_page=page, total_pages=total_pages)
+    return render_template('index.html',
+                           entries=entries,
+                           current_page=page,
+                           total_pages=total_pages,
+                           index_increase=start_idx)
 
 
 @app.route('/add', methods=['GET', 'POST'])
