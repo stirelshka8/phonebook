@@ -1,26 +1,83 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Add Entry</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <title>Добавить новую запись в телефоную книгу</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f0f0f0;
+        }
+        .container {
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 5px;
+            width: 50%;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            background-color: #333;
+            color: #fff;
+            padding: 10px;
+            margin: 0;
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        label {
+            display: block;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+        input[type="text"] {
+            width: 100%;
+            padding: 8px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        .button {
+            display: inline-block;
+            padding: 5px 10px;
+            background-color: #007bff;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 5px;
+        }
+    </style>
 </head>
 <body>
     <div class="container">
-        <h1>Add New Entry</h1>
+        <h1>Добавить новую запись в телефоную книгу</h1>
         <form method="POST" action="{{ url_for('add_entry') }}">
-            <label>Фамилия:</label>
-            <input type="text" name="last_name"><br>
-            <label>Имя:</label>
-            <input type="text" name="first_name"><br>
-            <label>Отчество:</label>
-            <input type="text" name="middle_name"><br>
-            <label>Организация:</label>
-            <input type="text" name="organization"><br>
-            <label>Рабочий телефон:</label>
-            <input type="text" name="work_phone"><br>
-            <label>Персональный телефон (сотовый):</label>
-            <input type="text" name="personal_phone"><br>
-            <input class="button" type="submit" value="Add Entry">
+            <div class="form-group">
+                <label for="last_name">Фамилия:</label>
+                <input type="text" id="last_name" name="last_name">
+            </div>
+            <div class="form-group">
+                <label for="first_name">Имя:</label>
+                <input type="text" id="first_name" name="first_name">
+            </div>
+            <div class="form-group">
+                <label for="middle_name">Отчество:</label>
+                <input type="text" id="middle_name" name="middle_name">
+            </div>
+            <div class="form-group">
+                <label for="organization">Организация:</label>
+                <input type="text" id="organization" name="organization">
+            </div>
+            <div class="form-group">
+                <label for="work_phone">Рабочий телефон:</label>
+                <input type="text" id="work_phone" name="work_phone">
+            </div>
+            <div class="form-group">
+                <label for="personal_phone">Персональный телефон (сотовый):</label>
+                <input type="text" id="personal_phone" name="personal_phone">
+            </div>
+            <div class="form-group">
+                <input class="button" type="submit" value="Add Entry">
+            </div>
         </form>
         <br>
         <a class="button" href="{{ url_for('index') }}">Back to Phonebook</a>

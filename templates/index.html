@@ -2,14 +2,80 @@
 <html>
 <head>
     <title>Phonebook</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f0f0f0;
+        }
+        h1 {
+            background-color: #333;
+            color: #fff;
+            padding: 10px;
+            margin: 0;
+        }
+        .menu {
+            background-color: #666;
+            padding: 10px;
+        }
+        .menu ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        .menu ul li {
+            display: inline;
+            margin-right: 15px;
+        }
+        .menu ul li a {
+            text-decoration: none;
+            color: #fff;
+            background-color: #444;
+            padding: 5px 10px;
+            border-radius: 5px;
+        }
+        table {
+            border-collapse: collapse;
+            width: 100%;
+            margin-top: 15px;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+        .edit-button {
+            text-decoration: none;
+            padding: 5px 10px;
+            background-color: #007bff;
+            color: #fff;
+            border-radius: 5px;
+        }
+        .pagination {
+            margin-top: 15px;
+            text-align: center;
+        }
+        .button {
+            display: inline-block;
+            padding: 5px 10px;
+            margin: 0 5px;
+            background-color: #007bff;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 5px;
+        }
+    </style>
 </head>
 <body>
-    <h1>Phonebook</h1>
+    <h1>Телефонная книга</h1>
     <nav class="menu">
         <ul>
-            <li><a href="{{ url_for('add_entry') }}">Добавить запись</a></li>
-            <li><a href="{{ url_for('search_entries') }}">Поиск записей</a></li>
+            <li><a href="{{ url_for('add_entry') }}" class="button">Добавить запись</a></li>
+            <li><a href="{{ url_for('search_entries') }}" class="button">Поиск записей</a></li>
         </ul>
     </nav>
     <table>
@@ -25,7 +91,7 @@
         </tr>
         {% for entry in entries %}
         <tr>
-            <td>{{ (loop.index0 + index_increase) + 1 }} ({{ (loop.index0 + index_increase)}})</td>
+            <td class="index-cell">{{ (loop.index0 + index_increase) + 1 }} ({{ (loop.index0 + index_increase)}})</td>
             <td>{{ entry[0] }}</td>
             <td>{{ entry[1] }}</td>
             <td>{{ entry[2] }}</td>
@@ -33,20 +99,19 @@
             <td>{{ entry[4] }}</td>
             <td>{{ entry[5] }}</td>
             <td>
-                <a class="button" href="{{ url_for('edit_entry', index=loop.index0 + index_increase) }}">
-                    <img src="static/images/edit.png" width="100px">
+                <a class="edit-button" href="{{ url_for('edit_entry', index=loop.index0 + index_increase) }}">
+                    Edit
                 </a>
-
             </td>
         </tr>
         {% endfor %}
     </table>
     <div class="pagination">
         {% if current_page > 1 %}
-            <a class="button" href="{{ url_for('index', page=current_page-1) }}">Previous</a>
+            <a class="button" href="{{ url_for('index', page=current_page-1) }}">Назад</a>
         {% endif %}
         {% if current_page < total_pages %}
-            <a class="button" href="{{ url_for('index', page=current_page+1) }}">Next</a>
+            <a class="button" href="{{ url_for('index', page=current_page+1) }}">Далее</a>
         {% endif %}
     </div>
 </body>
